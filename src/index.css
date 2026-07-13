@@ -55,15 +55,8 @@ body {
 }
 
 #root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
+  width: 100%;
+  min-height: 100vh;
 }
 
 h1,
@@ -120,4 +113,28 @@ code {
   display: flex;
   flex: 1;
   overflow: hidden;
+}
+
+
+.top-row .sidebar{
+  width: 220px;
+  background-color: #000000;
+  padding: 16px;
+  flex-shrink: 0;
+}
+
+.top-row .main-content{
+  flex: 1;
+  background-color: #121212;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.player-bar{
+  height: 90px;
+  background-color:#181818;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
 }
