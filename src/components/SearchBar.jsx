@@ -11,7 +11,6 @@ function SearchBar() {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
-      <p>You typed: {searchTerm}</p>
     </div>
   );
 }
