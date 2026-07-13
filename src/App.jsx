@@ -6,9 +6,11 @@ import PlayerBar from "./components/PlayerBar.jsx";
 //That syntax   <Sidebar /> is how you "use" a component once it's imported
 function App() {
   return (
-    <div>
-      <Sidebar />
-      <MainContent />
+    <div className="app">
+      <div className="top-row">
+        <Sidebar />
+        <MainContent />
+      </div>
       <PlayerBar />
     </div>
   );
