@@ -5,6 +5,15 @@ function MainContent({ setCurrentTrack }) {
   const [searchTerm, setSearchTerm] = useState("")
   const [results, setResults] = useState([])
   const [isLoading, setIsLoading] = useState(false)
+  const [featuredTracks, setFeaturedTracks] = useState([])
+
+  // Runs once, when the component first loads
+  useEffect(() => {
+    fetch(`https://itunes.apple.com/search?term=weeknd&media=music&limit=10`)
+      .then((res) => res.json())
+      .then((data) => setFeaturedTracks(data.results))
+      .catch((err) => console.error("Featured fetch error:", err))
+  }, [])
 
   useEffect(() => {
     if (searchTerm.trim() === "") {
@@ -31,23 +40,24 @@ function MainContent({ setCurrentTrack }) {
     return () => clearTimeout(timer)
   }, [searchTerm])
 
+  const isSearching = searchTerm.trim() !== ""
+  const trackList = isSearching ? results : featuredTracks
+
   return (
     <div className="main-content">
       <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <h2>
-        {searchTerm.trim() === ""
-          ? "Search for a song to get started"
-          : `Results for "${searchTerm}"`}
+        {isSearching ? `Results for "${searchTerm}"` : "Popular right now"}
       </h2>
 
       {isLoading && <p className="status-message">Searching...</p>}
 
-      {!isLoading && searchTerm.trim() !== "" && results.length === 0 && (
+      {!isLoading && isSearching && results.length === 0 && (
         <p className="status-message">No results found for "{searchTerm}"</p>
       )}
 
       <div className="results-grid">
-        {results.map((track) => (
+        {trackList.map((track) => (
           <div
             className="track-card"
             key={track.trackId}
