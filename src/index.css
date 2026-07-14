@@ -179,3 +179,21 @@ code {
   font-size: 12px;
   margin: 0;
 }
+
+.now-playing button{
+  margin-left: 12px;
+  cursor: pointer;
+}
+
+.seek-bar {
+  flex: 1;
+  margin: 0 8px;
+  max-width: 300px;
+}
+
+.time{
+  color: #b3b3b3;
+  font-size: 12px;
+  min-width: 32px;
+}
+
