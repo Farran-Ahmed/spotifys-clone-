@@ -45,7 +45,7 @@ function PlayerBar({ currentTrack }) {
             <p className="track-artist">{currentTrack.artistName}</p>
           </div>
           <button onClick={togglePlay}>
-            {isPlaying ? 'Pause' : 'Play'}
+            {isPlaying ? '⏸' : '▶'}
           </button>
 
           <span className='time'>{formatTime(currentTime)}</span>

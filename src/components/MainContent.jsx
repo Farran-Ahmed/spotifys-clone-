@@ -27,7 +27,10 @@ function MainContent({setCurrentTrack}) {
 return (
     <div className="main-content">
       <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-      <h2>Main Content</h2>
+      <h2>{searchTerm.trim() === ""
+          ? "Search for a song to get started"
+          : `Results for "${searchTerm}"`}
+      </h2>
       <div className="results-grid">
         {results.map((track) => (
           <div className="track-card" key={track.trackId} onClick={() => setCurrentTrack(track)}>
