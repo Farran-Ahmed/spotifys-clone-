@@ -5,6 +5,7 @@ function PlayerBar({ currentTrack }) {
   const [isPlaying, setIsPlaying] = useState(false)
   const [currentTime, setCurrentTime] = useState(0)
   const [duration, setDuration] = useState(0)
+  const [volume, setVolume] = useState(1)
 
   useEffect(() => {
     if (currentTrack && audioRef.current) {
@@ -12,6 +13,12 @@ function PlayerBar({ currentTrack }) {
       setIsPlaying(true)
     }
   }, [currentTrack])
+
+  useEffect(() => {
+  if (audioRef.current) {
+    audioRef.current.volume = volume
+  }
+}, [volume])
 
   const togglePlay = () => {
     if (isPlaying) {
@@ -26,6 +33,10 @@ function PlayerBar({ currentTrack }) {
     const newTime = e.target.value
     audioRef.current.currentTime = newTime
     setCurrentTime(newTime)
+  }
+
+  const handleVolumeChange = (e) => {
+    setVolume(Number(e.target.value))
   }
 
   const formatTime = (time) => {
@@ -55,9 +66,22 @@ function PlayerBar({ currentTrack }) {
             max={duration || 0}
             value={currentTime}
             onChange={handleSeek}
-            className='seekbar'
+            className='seek-bar'
             />
             <span className="time">{formatTime(duration)}</span>
+
+          <div className="volume-control">
+            <span className="volume-icon">{volume === 0 ? '🔇' : '🔊'}</span>
+            <input
+              type="range"
+              min="0"
+              max="1"
+              step="0.01"
+              value={volume}
+              onChange={handleVolumeChange}
+              className="volume-bar"
+            />
+          </div>
 
           <audio
             ref={audioRef}
