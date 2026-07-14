@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import SearchBar from "./SearchBar.jsx";
 
-function MainContent({ setCurrentTrack }) {
-  const [searchTerm, setSearchTerm] = useState("")
+function MainContent({ setCurrentTrack, searchTerm, setSearchTerm }) {
   const [results, setResults] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [featuredTracks, setFeaturedTracks] = useState([])
