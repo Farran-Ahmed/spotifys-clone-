@@ -138,3 +138,44 @@ code {
   align-items: center;
   padding: 0 16px;
 }
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.track-card {
+  background-color: #181818;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.track-card:hover {
+  background-color: #282828;
+}
+
+.track-card img {
+  width: 100%;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.track-name {
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 0 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.track-artist {
+  color: #b3b3b3;
+  font-size: 12px;
+  margin: 0;
+}

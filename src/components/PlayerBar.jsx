@@ -1,7 +1,17 @@
-function PlayerBar() {
+function PlayerBar({ currentTrack }) {
   return (
     <div className="player-bar">
-      <h2>Player Bar</h2>
+      {currentTrack ? (
+        <div className="now-playing">
+          <img src={currentTrack.artworkUrl100} alt={currentTrack.trackName} />
+          <div>
+            <p className="track-name">{currentTrack.trackName}</p>
+            <p className="track-artist">{currentTrack.artistName}</p>
+          </div>
+        </div>
+      ) : (
+        <p>Nothing playing</p>
+      )}
     </div>
   )
 }
