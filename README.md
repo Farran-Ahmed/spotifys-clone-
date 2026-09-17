@@ -36,7 +36,6 @@ This project uses the iTunes Search API directly, which is free and requires no 
 
 ## Screenshots
 
-*Add a screenshot or short GIF of the app here.*
 
 ## What I'd Add Next
 
